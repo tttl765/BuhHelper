@@ -12,6 +12,8 @@ namespace BuhHelp
     {
         static void Main(string[] args)
         {
+            String inn = System.Console.ReadLine();
+
             var url = "https://focus-api.kontur.ru/api3/req?key=3208d29d15c507395db770d0e65f3711e40374df&inn=6663003127";
             // Create a request for the URL. 
             WebRequest request = WebRequest.Create(url);
@@ -32,7 +34,7 @@ namespace BuhHelp
             // Clean up the streams and the response.
             reader.Close();
             response.Close();
-
+                        
             Console.ReadKey();
         }
     }
