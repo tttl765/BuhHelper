@@ -56,6 +56,7 @@ namespace EveryDay.BuhHelper.WinForm
             }
         }
 
+       
         private void cbCommands_SelectedIndexChanged(object sender, EventArgs e)
         {
             lblResult.Text = "";
@@ -63,6 +64,34 @@ namespace EveryDay.BuhHelper.WinForm
             if(command != null)
             {
                 lblResult.Text = command.Description;
+            }
+            ////если при смене команды поле с даднными не пустое, то запросить, нужно ли удалять
+            ////но мне также нравится идея, что после выбора команды атоматически вставать 
+            //на поле с данными и выделять текст.
+            //У обоих вариантотв есть плюсы и минусы:
+            //всплывающее окно - отвлечение и доп. нажатие кнопки
+            //перемещение на поле с данными и выделение текста:
+            //- автоматическое перескакивание - не есть хорошо, например, если не ту команду выбрали,
+            //    а без перескакивания могут забыть исправить данные;
+            //- выделение текста повышение вероятности, что стерут текст случайно.
+            //Выберу первый вариант, на ночь глядя больше ничего не придумывается
+            ////А вот если получить возможность использовать в ЭЛМЕ редактируемую таблицу без отдельного окна
+            //    и я была бы почти абсолютно счастлива;) а пользователи как были бы счастливы!
+
+            if (tbInput == null)
+            {
+                const string message =
+                "Вы сменили команду. Удалить ранее указанные данные?";
+                const string caption = "Вопрос";
+                var resultFormMessageBox = MessageBox.Show(message, caption,
+                                             MessageBoxButtons.YesNo,
+                                             MessageBoxIcon.Question);
+
+                // If the no button was pressed ...
+                if (resultFormMessageBox == DialogResult.Yes)
+                {
+                    tbInput = null;
+                }
             }
         }
     }
