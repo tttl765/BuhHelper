@@ -1,0 +1,34 @@
+﻿@using EveryDay.BuhHelper.Console.Models
+@model Web.Models.CommandViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Команды</h2>
+
+<ol>
+    @foreach (var item in Model.Commands)
+    {
+        <li>@Html.ActionLink(item.Name, "Index", new { command = item.Name }) </li>
+        <li>
+            <button onclick="getDataExec('@(item.Name)')">@(item.Name)</button>
+        </li>
+    }
+</ol>
+
+<hr />
+
+@if(Model.Result != null)
+{
+    <div>@(Model.Result.Success ? Model.Result.Result : Model.Result.Error)</div>
+}
+
+
+<script type="text/javascript">
+    function getDataExec(command) {
+        var args = prompt("Введите данные");
+        
+        document.location.href ='@(Url.Action("Index", "Command"))/' + command + '/' + args;
+    }
+</script>
+
