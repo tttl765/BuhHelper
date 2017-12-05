@@ -1,0 +1,13 @@
+﻿@model EveryDay.BuhHelper.Console.Models.ICommandResult
+@if (Model.Success)
+{
+    <div>
+        @Model.Result
+    </div>
+}
+else
+{
+    <div style="color:darkorange;">
+        @Model.Error
+    </div>
+}
