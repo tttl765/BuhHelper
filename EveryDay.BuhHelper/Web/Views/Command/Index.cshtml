@@ -2,33 +2,49 @@
 @model Web.Models.CommandViewModel
 @{
     ViewBag.Title = "Index";
+
+    var listItems = new List<SelectListItem>();
+
+    listItems.AddRange(
+        Model.Commands.Select(
+            c => new SelectListItem() { Text = c.Name, Value = c.Name }
+        )
+    );
 }
 
 <h2>Команды</h2>
 
-<ol>
-    @foreach (var item in Model.Commands)
-    {
-        <li>@Html.ActionLink(item.Name, "Index", new { command = item.Name }) </li>
-        <li>
-            <button onclick="getDataExec('@(item.Name)')">@(item.Name)</button>
-        </li>
-    }
-</ol>
+@Html.DropDownList("command", listItems)
 
+@Html.TextBox("args")
+
+<input type="button" onclick="exec();" value="выполнить ajax" />
 <hr />
 
-@if(Model.Result != null)
-{
-    <div>@(Model.Result.Success ? Model.Result.Result : Model.Result.Error)</div>
-}
-
-
-<script type="text/javascript">
-    function getDataExec(command) {
-        var args = prompt("Введите данные");
-        
-        document.location.href ='@(Url.Action("Index", "Command"))/' + command + '/' + args;
+<div id="divResult">
+    @if (Model.Result != null)
+    {
+        @Html.Partial("Exec", Model.Result)
     }
-</script>
+</div>
 
+<script>
+    function exec() {
+        // получаем команду
+        var command = document.getElementById("command").value;
+        // получаем аргументы
+        var args = document.getElementById("args").value;
+
+        $.ajax({
+            // формируем запрос
+            url: '/Command/Exec/' + command + '/' + args,
+            success: function (result) {
+                // запись контента в определенный элемент
+                document.getElementById("divResult").innerHTML = result;
+            }
+        });
+
+    }
+
+
+</script>

@@ -9,11 +9,14 @@ namespace Web.Controllers
     {
         private ICommandService CommandService { get; set; }
 
+        public CommandController()
+        {
+            CommandService = new CommandService();
+        }
+
         // GET: Command
         public ActionResult Index(string command, string args)
         {
-            CommandService = new CommandService();
-
             // получить список команд
             var Commands = CommandService.GetCommands("Ext");
 
@@ -29,6 +32,24 @@ namespace Web.Controllers
             }
 
             return View(model);
+        }
+
+        //[HttpPost]
+        public PartialViewResult Exec(string command, string args)
+        {
+            // получить список команд
+            var Commands = CommandService.GetCommands("Ext");
+
+            var selectCommand = Commands.FirstOrDefault(c => c.Name == command);
+
+            if (selectCommand != null)
+            {
+                var result = selectCommand.Exec(args);
+
+                return PartialView(result);
+            }
+
+            return PartialView();
         }
     }
 }

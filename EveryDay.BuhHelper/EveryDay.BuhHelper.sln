@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EveryDay.BuhHelper.WinForm"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EveryDay,BuhHelper.Web", "Web\EveryDay,BuhHelper.Web.csproj", "{68791A0E-8A80-494F-97EB-8F26F32EF18E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EveryDay.BuhHelper.DB", "EveryDay.BuhHelper.DB\EveryDay.BuhHelper.DB.csproj", "{C032B668-0C85-4186-955B-F2A49DA55D59}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{68791A0E-8A80-494F-97EB-8F26F32EF18E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68791A0E-8A80-494F-97EB-8F26F32EF18E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68791A0E-8A80-494F-97EB-8F26F32EF18E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C032B668-0C85-4186-955B-F2A49DA55D59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C032B668-0C85-4186-955B-F2A49DA55D59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C032B668-0C85-4186-955B-F2A49DA55D59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C032B668-0C85-4186-955B-F2A49DA55D59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
