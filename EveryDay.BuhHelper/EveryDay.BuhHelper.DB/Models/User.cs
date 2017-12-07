@@ -4,13 +4,13 @@ namespace EveryDay.BuhHelper.DB.Models
 {
     public class User : IEntity
     {
-        public Guid Uid { get; set; }
+        public virtual Guid Uid { get; set; }
 
-        public string Login { get; set; }
+        public virtual string Login { get; set; }
 
-        public string Password { get; set; }
+        public virtual string Password { get; set; }
 
-        public string FIO { get; set; }
+        public virtual string FIO { get; set; }
 
     }
 }

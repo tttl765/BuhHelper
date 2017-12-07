@@ -1,17 +1,23 @@
 ﻿using EveryDay.BuhHelper.Console.Services;
+using EveryDay.BuhHelper.DB;
+using EveryDay.BuhHelper.NHibernate.Repositories;
 using System.Linq;
 using System.Web.Mvc;
 using Web.Models;
 
 namespace Web.Controllers
 {
+    [Authorize]
     public class CommandController : Controller
     {
         private ICommandService CommandService { get; set; }
 
+        private ICommandRepository CommandRepository { get; set; }
+
         public CommandController()
         {
             CommandService = new CommandService();
+            CommandRepository = new CommandRepository();
         }
 
         // GET: Command
@@ -30,6 +36,8 @@ namespace Web.Controllers
             {
                 model.Result = selectCommand.Exec(args);
             }
+
+            ViewBag.Commands = CommandRepository.GetAll();
 
             return View(model);
         }

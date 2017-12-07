@@ -48,3 +48,23 @@
 
 
 </script>
+
+
+
+@{
+    var commands = ViewBag.Commands as IList<EveryDay.BuhHelper.DB.Models.Command>;
+}
+
+<table>
+    @foreach (var item in commands)
+    {
+        <tr>
+            <td>
+                @(item.Uid)
+            </td>
+            <td>
+                @(item.Name)
+            </td>
+        </tr>
+    }
+</table>

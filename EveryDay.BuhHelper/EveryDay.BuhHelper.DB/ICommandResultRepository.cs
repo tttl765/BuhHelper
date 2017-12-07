@@ -1,9 +1,6 @@
 ﻿using EveryDay.BuhHelper.DB.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EveryDay.BuhHelper.DB
 {
@@ -15,13 +12,24 @@ namespace EveryDay.BuhHelper.DB
         Guid Uid { get; set; }
     }
 
+    /// <summary>
+    /// Интерфейс хранилища сущности
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface IEntityRepository<T> where T: IEntity
     {
-        void Save(T result);
+        /// <summary>
+        /// Сохранить сущность в бд
+        /// </summary>
+        /// <param name="result"></param>
+        /// <returns>True, если удалось сохранить запись. False - ошибка</returns>
+        bool Save(T result);
 
         T Load(Guid uid);
 
         T Load(string search);
+
+        IList<T> GetAll();
     }
 
     public interface ICommandResultRepository : IEntityRepository<CommandResult>
@@ -30,7 +38,7 @@ namespace EveryDay.BuhHelper.DB
 
     public interface IUserRepository : IEntityRepository<User>
     {
-        int Count(string FIO);
+        User Find(string login, string password);
     }
 
     public interface ICommandRepository : IEntityRepository<Command>

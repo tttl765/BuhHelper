@@ -171,7 +171,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommandController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -217,18 +216,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
@@ -238,6 +227,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Command\Index.cshtml" />
+    <Content Include="Views\Command\Exec.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -254,6 +244,14 @@
     <ProjectReference Include="..\Core\EveryDay.BuhHelper.Core.csproj">
       <Project>{0E07AE91-3FD7-475A-B7E9-7AE8490386C1}</Project>
       <Name>EveryDay.BuhHelper.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EveryDay.BuhHelper.DB\EveryDay.BuhHelper.DB.csproj">
+      <Project>{C032B668-0C85-4186-955B-F2A49DA55D59}</Project>
+      <Name>EveryDay.BuhHelper.DB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EveryDay.BuhHelper.HNibernate\EveryDay.BuhHelper.NHibernate.csproj">
+      <Project>{D9B02509-0E4C-4B14-8C1F-8E20E31CB7C8}</Project>
+      <Name>EveryDay.BuhHelper.NHibernate</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
